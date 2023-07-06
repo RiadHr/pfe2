@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:pfe2/features/notification/service/notification_service.dart';
+import 'package:pfe2/models/notification.dart';
 import 'package:provider/provider.dart';
-
 import '../../../constants/global_variables.dart';
-import '../../../models/user.dart';
 import '../../../providers/medecin_provider.dart';
-import '../../../providers/user_provider.dart';
 import '../../auth/services/auth_service.dart';
 import '../../auth/services/auth_service_medecin.dart';
 import '../../home/widget/loader.dart';
-import '../../search/screens/search_screen_user.dart';
 import '../../user/screens/user_detail_screen.dart';
 
 class NotificationsScreen extends StatefulWidget {
@@ -23,29 +20,23 @@ class NotificationsScreen extends StatefulWidget {
 class _NotificationsScreenState extends State<NotificationsScreen> {
   final AuthService authService = AuthService();
   final NotificationsService notificationsService = NotificationsService();
-  List<User>? users = [];
-
-  void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchScreenUser.routeName, arguments: query);
-  }
+  List<Notifications>? notifications = [];
 
   @override
   void initState() {
     super.initState();
-    fetchAllUser();
+    fetchAllNotification();
   }
 
-  fetchAllUser() async {
-    users = (await notificationsService.fetchAllNotificationssByUserId(context)).cast<User>();
+  fetchAllNotification() async {
+    notifications = (await notificationsService.fetchAllNotificationssByUserId(context)).cast<Notifications>();
     setState(() {});
   }
 
   Color defaultColor = GlobalVariables.firstColor;
   @override
   Widget build(BuildContext context) {
-    var user = Provider.of<UserProvider>(context).user.toJson();
-    var doctor = Provider.of<MedecinProvider>(context).medecin;
-    return users == null
+    return notifications == null
         ? const Loader()
         : Scaffold(
             appBar: PreferredSize(
@@ -95,15 +86,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             ),
             body: ListView.builder(
-              itemCount: users!.length,
+              itemCount: notifications!.length,
               itemBuilder: (context, index) {
-                final userData = users![index];
+                final notificationsData = notifications![index];
                 return GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(
                       context,
                       UserDetailScreen.routeName,
-                      arguments: users![index],
+                      arguments: notifications![index],
                     );
                   },
                   child: Container(
@@ -127,7 +118,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           child: CircleAvatar(
                             // backgroundColor: Colors.white,
                             child: Icon(
-                              Icons.account_circle,
+                              Icons.notifications,
                               color: Colors.white,
                               size: 60,
                             ),
@@ -137,7 +128,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text(
-                              '${userData.name}',
+                              '${notificationsData.doctorName}',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
@@ -145,8 +136,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                               // overflow: TextOverflow.ellipsis,
                               // maxLines: 2,
                             ),
-                            Text('${userData.telephone}'),
-                            Text('${userData.name}')
+                            Text('${notificationsData.userName}'),
+                            Text('${notificationsData.time} ${notificationsData.dateTime}')
                           ],
                         ),
                       ],

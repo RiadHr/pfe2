@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-// import 'package:amazon_clone_tutorial/common/widgets/bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -9,6 +7,7 @@ import '../../../constants/error_handling.dart';
 import '../../../constants/global_variables.dart';
 import '../../../constants/utils.dart';
 import '../../home/screens/bottom_bar_medecin.dart';
+import '../../home/screens/bottom_bar_pharmacien.dart';
 import '../../home/screens/home_screen.dart';
 import '../../../models/pharmacien.dart';
 import '../../../providers/pharmacien_provider.dart';
@@ -64,7 +63,7 @@ class AuthServicePharmacien {
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            BottomBarMedecin.routeName,
+            BottomBarPharmacien.routeName,
                 (route) => false,
           );
         },
@@ -100,7 +99,7 @@ class AuthServicePharmacien {
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
           Navigator.pushNamedAndRemoveUntil(
             context,
-            BottomBarMedecin.routeName,
+            BottomBarPharmacien.routeName,
                 (route) => false,
           );
         },

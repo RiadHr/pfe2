@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:ffi';
 
+import 'package:pfe2/models/notification.dart';
+
 class User {
   final String id;
   final String name;
@@ -13,6 +15,7 @@ class User {
   final String token;
   final String type;
   final List<String>? isBlacklisted;
+  final List<Notifications>? notifications;
 
   User({
     required this.id,
@@ -25,7 +28,8 @@ class User {
     required this.telephone,
     required this.token,
     required this.type,
-    this.isBlacklisted
+    this.isBlacklisted,
+    this.notifications
   });
 
   Map<String, dynamic> toMap() {
@@ -40,7 +44,8 @@ class User {
       'telephone':telephone,
       'token': token,
       'type': type,
-      'isBlacklisted':isBlacklisted
+      'isBlacklisted':isBlacklisted,
+      'notifications':notifications
     };
   }
 
@@ -62,6 +67,12 @@ class User {
               (x) => x,
         ),
       ) : null,
+      notifications: map['appointment'] != null
+          ? List<Notifications>.from(
+        map['appointment']?.map(
+              (x) => Notifications.fromMap(x),
+        ),
+      ) : null,
     );
   }
 
@@ -80,7 +91,8 @@ class User {
     String? telephone,
     String? token,
     String? type,
-    List<String>? isBlacklisted
+    List<String>? isBlacklisted,
+    final List<Notifications>? notifications,
   }) {
     return User(
       id: id ?? this.id,
@@ -93,7 +105,8 @@ class User {
       telephone: telephone ?? this.telephone,
       token: token ?? this.token,
       type: type ?? this.type,
-      isBlacklisted: isBlacklisted ?? this.isBlacklisted
+      isBlacklisted: isBlacklisted ?? this.isBlacklisted,
+      notifications: notifications ?? this.notifications
     );
   }
 }

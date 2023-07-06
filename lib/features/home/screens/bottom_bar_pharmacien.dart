@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pfe2/features/home/screens/home_screen_medecin.dart';
-// import 'package:pfe2/features/home/screens/home_screen_pharmacien.dart';
 import '../../../common/widgets/icon_container.dart';
 import '../../../constants/global_variables.dart';
 import '../../auth/screens/auth_type.dart';
+import 'home_screen_pharmacien.dart';
 
 class BottomBarPharmacien extends StatefulWidget {
   static const String routeName = '/actual-home-pharmacien';
@@ -18,7 +17,7 @@ class _BottomBarPharmacienState extends State<BottomBarPharmacien> {
   double bottomBarWidth = 60;
 
   List<Widget> pages = [
-    // const HomeScreenPharmacien(),
+    const HomeScreenPharmacien(),
     const AuthType(),
   ];
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:pfe2/features/home/screens/home_screen_pharmacien.dart';
+import 'package:pfe2/features/home/screens/bottom_bar_pharmacien.dart';
 import 'package:pfe2/features/notification/screen/notification_screen.dart';
-
 import 'features/admin/screen/admin_screen.dart';
 import 'features/admin/screen/block_screen.dart';
 import 'features/admin/screen/home_screen_admin.dart';
@@ -16,7 +15,6 @@ import 'features/auth/screens/auth_screen_pharmacien.dart';
 import 'features/auth/screens/auth_type.dart';
 import 'features/home/screens/bottom_bar.dart';
 import 'features/home/screens/bottom_bar_medecin.dart';
-import 'features/home/screens/bottom_bar_pharmacien.dart';
 import 'features/home/screens/home_screen.dart';
 import 'features/home/screens/home_screen_medecin.dart';
 import 'features/home/screens/medecin_specialite_screen.dart';
@@ -195,6 +193,12 @@ Route<dynamic> generatedRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => NotificationsScreen(),
+      );
+
+    case BottomBarPharmacien.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => const BottomBarPharmacien(),
       );
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/features/notification/screen/notification_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../common/widgets/icon_container.dart';
 import '../../../constants/global_variables.dart';
@@ -22,7 +23,7 @@ class _BottomBarMedecinState extends State<BottomBarMedecin> {
 
   List<Widget> pages = [
     const HomeScreenMedecin(),
-    const AuthType(),
+    const NotificationsScreen(),
     AppointmentMedecinScreen(),
   ];
 
@@ -40,7 +41,7 @@ class _BottomBarMedecinState extends State<BottomBarMedecin> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _page,
         backgroundColor: GlobalVariables.fourthColor,
-        iconSize: 20,
+        // iconSize: 20,
         onTap: updatePage,
         items: [
           // HOME
@@ -66,7 +67,7 @@ class _BottomBarMedecinState extends State<BottomBarMedecin> {
                 iconD: Icons.calendar_month,
                 page: _page,
                 bottomBarWidth: bottomBarWidth,
-                pageNumber: 3),
+                pageNumber: 2),
             label: '',
           ),
         ],

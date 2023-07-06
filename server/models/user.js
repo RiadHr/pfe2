@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const notificationSchema = require("./notification");
 
 const userSchema = mongoose.Schema({
     name: {required: true, type: String, trim: true,},
@@ -29,7 +30,8 @@ const userSchema = mongoose.Schema({
     telephone: {required:true, type: String,},
     type: {type: String, default: "user",},
     isBlacklisted: [String],
-    isBlocked:{type:Boolean,default: false}
+    isBlocked:{type:Boolean,default: false},
+    notifications:[notificationSchema]
 });
 
 const User = mongoose.model("User", userSchema);

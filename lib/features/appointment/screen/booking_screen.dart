@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/features/notification/service/notification_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -23,6 +24,7 @@ class BookingScreen extends StatefulWidget {
 class _BookingScreenState extends State<BookingScreen> {
   //declaration
   AuthService authService = AuthService();
+  NotificationsService notificationsService = NotificationsService();
   AppointmentService appoinmentService = AppointmentService();
   CalendarFormat _format = CalendarFormat.month;
   DateTime _focusDay = DateTime.now();
@@ -191,6 +193,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       user.name,
                       "prochain",
                       timeSelected);
+                  notificationsService.saveNotifications(user.id, widget.medecin.id, _focusDay,widget.medecin.name, user.name, timeSelected);
                   Navigator.pushNamed(context, AppointmentBooked.routeName);
                 },
                 disable: _timeSelected && _dateSelected ? false : true,

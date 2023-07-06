@@ -15,7 +15,7 @@ class NotificationsService {
   //create notification from the booking screen
   Future<void> saveNotifications(userId, doctorId, dateTime, doctorName,
       userName,
-      status, time) async {
+      time) async {
     Notifications notification = Notifications(
         id: '',
         userId: userId,
