@@ -9,12 +9,12 @@ import '../widgets/searched_medecin.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = '/search-screen';
-  final String searchQuery;
-  // final String specailite;
+  final String? searchQuery;
+  final String? specailite;
 
   const SearchScreen({
     Key? key,
-    required this.searchQuery,
+    required this.searchQuery, required this.specailite,
   }) : super(key: key);
 
   @override
@@ -35,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   fetchSearchedMedecin() async {
     medecins = await searchServices.fetchSearchedMedecin(
-        context: context, searchQuery: widget.searchQuery);
+        context: context, searchQuery: widget.searchQuery,specialite: widget.specailite);
     setState(() {});
   }
 

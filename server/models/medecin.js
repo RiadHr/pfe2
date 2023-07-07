@@ -24,6 +24,7 @@ const medecinSchema = mongoose.Schema({
     daira:{required:true, type:String},
     telephone: {required:true, type: String,},
     anciente:{required:true, type:Number,},
+    isBlocked:{type:Boolean,default: false},
     ratings:[ratingSchema],
     appointment :[appointmentSchema]
 });

@@ -28,7 +28,7 @@ import 'models/medecin.dart';
 import 'models/pharmacien.dart';
 import 'models/user.dart';
 
-Route<dynamic> generatedRoute(RouteSettings routeSettings) {
+Route<dynamic> generatedRoute(RouteSettings routeSettings,BuildContext context) {
   switch (routeSettings.name) {
     case AuthScreenPatient.routeName:
       return MaterialPageRoute(
@@ -85,11 +85,17 @@ Route<dynamic> generatedRoute(RouteSettings routeSettings) {
       );
 
     case SearchScreen.routeName:
-      var searchQuery = routeSettings.arguments as String;
+      var searchQuery = routeSettings.arguments as Map<String,String>;
+      print('search query $searchQuery');
+      // final Map<String, dynamic> arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      // final String query = arguments['query'];
+      // final String specialite = arguments['specialite'];
+      // print('specialite $specialite , query $query');
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => SearchScreen(
-          searchQuery: searchQuery,
+          searchQuery: searchQuery['query'],
+          specailite: searchQuery['specialite'],
         ),
       );
 
@@ -104,6 +110,7 @@ Route<dynamic> generatedRoute(RouteSettings routeSettings) {
 
     case MedecinDetailScreen.routeName:
       var medecin = routeSettings.arguments as Medecin;
+      print('medecin = $medecin');
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => MedecinDetailScreen(

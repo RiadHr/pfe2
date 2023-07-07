@@ -34,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   fetchAllMedecin() async {
     medecins = await authService.fetchAllMedecins(context);
+    print(medecins);
     setState(() {});
   }
 

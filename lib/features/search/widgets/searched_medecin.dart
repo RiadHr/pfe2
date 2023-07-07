@@ -32,13 +32,13 @@ class SearchedMedecin extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                // color: Colors.grey,
+                color: Colors.white,
                 width: 80,
                 height: 80,
                 child: CircleAvatar(
                   child: Icon(
                      Icons.account_circle,
-                     // color:Colors.grey ,
+                     color:Colors.white ,
                      size: 80,
                   ),
                 ),

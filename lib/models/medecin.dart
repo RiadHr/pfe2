@@ -20,7 +20,7 @@ class Medecin {
   final List<Rating>? rating;
   final List<Appointment>? appointment;
   final List<String>? blackListedUsers;
-  final bool? blockListed;
+  final bool? isBlocked;
 
   Medecin({
     required this.id,
@@ -37,7 +37,7 @@ class Medecin {
     this.rating,
     this.appointment,
     this.blackListedUsers,
-    this.blockListed
+    this.isBlocked
   });
 
   Map<String, dynamic> toMap() {
@@ -56,7 +56,7 @@ class Medecin {
       'appointment':appointment,
       'anciente':anciente,
       'blackListedUsers':blackListedUsers,
-      'blockListed':blockListed
+      'isBlocked':isBlocked
     };
   }
 
@@ -73,7 +73,7 @@ class Medecin {
       telephone: map['telephone']?? '',
       token: map['token'] ?? '',
       anciente:map['anciente']?? 0,
-      blockListed: map['blockListed']?? false,
+      isBlocked: map['isBlocked']?? false,
       blackListedUsers:map['blackListedUsers'] ?? null,
       rating: map['ratings'] != null
           ? List<Rating>.from(
@@ -109,7 +109,7 @@ class Medecin {
     int? anciente,
     final List<Rating>? rating,
     final List<Appointment>? appointment,
-    bool? blockListed
+    bool? isBlocked
 
 
   }) {
@@ -127,7 +127,7 @@ class Medecin {
       anciente: anciente ?? this.anciente,
       rating: rating ?? this.rating,
       appointment: appointment ?? this.appointment,
-      blockListed: blockListed ?? this.blockListed
+      isBlocked: isBlocked ?? this.isBlocked
     );
   }
 }

@@ -173,7 +173,7 @@ class AuthService {
 
     final String? wilaya  = prefs.getString('wilaya');
     final String? daira  = prefs.getString('daira');
-
+    print('wilaya = $wilaya daira = $daira');
 
     List<Medecin> medecinList = [];
     try {
@@ -183,6 +183,7 @@ class AuthService {
         'x-auth-token': userProvider.user.token,
       });
 
+      print('medecinList$medecinList');
       httpErrorHandle(
         response: res,
         context: context,

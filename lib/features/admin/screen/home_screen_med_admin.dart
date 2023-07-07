@@ -140,8 +140,6 @@ class _HomeScreenMedAdminState extends State<HomeScreenMedAdmin> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
                               ),
-                              // overflow: TextOverflow.ellipsis,
-                              // maxLines: 2,
                             ),
                             Text('${userData.telephone}'),
                             Text('${userData.name}')

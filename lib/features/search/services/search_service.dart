@@ -12,13 +12,14 @@ import '../../../providers/user_provider.dart';
 class SearchServices {
   Future<List<Medecin>> fetchSearchedMedecin({
     required BuildContext context,
-    required String searchQuery,
+    required String? searchQuery,
+    required String? specialite
   }) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     List<Medecin> medecinList = [];
     try {
       http.Response res = await http.get(
-        Uri.parse('$uri/api/medecins/search/$searchQuery'),
+        Uri.parse('$uri/api/medecins/search/$searchQuery/$specialite'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,

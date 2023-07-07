@@ -212,13 +212,9 @@ auth.put('/users/:userId/block', async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        print('userBlocked'+user.isBlocked);
+        console.log('userBlocked'+user.isBlocked);
         // Block the user by updating the necessary fields
-        if(user.isBlocked == false){
             user.isBlocked = true;
-        }else{
-            user.isBlocked = false;
-        }
 
         // Save the changes to the user
         await user.save();
@@ -232,19 +228,29 @@ auth.put('/users/:userId/block', async (req, res) => {
 
 
 
+
 auth.put('/doctors/:doctorId/block', async (req, res) => {
     try {
         const { doctorId } = req.params;
-
+        console.log('doctor id = '+doctorId);
         // Find the user by userId
         const doctor = await Medecin.findById(doctorId);
+        console.log('doctor = '+doctor)
 
         if (!doctor) {
             return res.status(404).json({ message: 'User not found' });
         }
+        // print('doctor isblocked'+);
 
         // Block the user by updating the necessary fields
-        doctor.isBlocked = true;
+        if(doctor.isBlocked == true){
+            doctor.isBlocked = false;
+            console.log('doctor unblocked'+doctor.isBlocked);
+        }else{
+            doctor.isBlocked = true;
+            console.log('doctor blocked'+doctor.isBlocked);
+
+        }
 
         // Save the changes to the user
         await doctor.save();
@@ -255,6 +261,7 @@ auth.put('/doctors/:doctorId/block', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
 
 
 

@@ -14,7 +14,7 @@ class MedecinProvider extends ChangeNotifier {
     telephone: '',
     anciente: 0,
     token: '',
-    blockListed: false
+    isBlocked: false
   );
 
   Medecin get medecin => _medecin;

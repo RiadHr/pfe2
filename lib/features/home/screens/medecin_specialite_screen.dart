@@ -32,7 +32,15 @@ class _MedecinSpecialiteScreenState extends State<MedecinSpecialiteScreen> {
   }
 
   void navigateToSearchScreen(String query) {
-    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+    // Map<String, dynamic> arguments = {
+    //   'query': query,
+    //   'specialite': widget.specialite,
+    // };
+    // print('argumet ${arguments["specialite"]} ${arguments["query"]}');
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments:{
+      'query': query,
+      'specialite': widget.specialite,
+    },);
   }
 
   fetchMedecinSpecialites() async {

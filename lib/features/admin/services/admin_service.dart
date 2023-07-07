@@ -29,6 +29,8 @@ class AdminService{
     }
   }
 
+
+
   Future<void> blocklistDoctor( String doctorId) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -45,7 +47,8 @@ class AdminService{
       );
 
       if (response.statusCode == 200) {
-        print('User blacklisted successfully');
+        print(response.body);
+        print('User blocklisted successfully');
       } else {
         print('${response.body}: ${response.statusCode}');
       }

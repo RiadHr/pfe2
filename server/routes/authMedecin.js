@@ -107,15 +107,17 @@ authMedecin.get("/", medecinMiddleware, async (req, res) => {
 
 // recherche des medecin par nom
 // /api/medecins/search/i
-authMedecin.get("/api/medecins/search/:param", authMiddleware, async (req, res) => {
+authMedecin.get("/api/medecins/search/:param/:specialite", authMiddleware, async (req, res) => {
     try {
         const searchParam = req.params.param;
+        const specialite = req.params.specialite;
 
         const medecins = await Medecin.find({
             $or: [
                 { name: { $regex: searchParam, $options: "i" } },
                 { address: { $regex: searchParam, $options: "i" } }
-            ]
+            ],
+            specialite: { $regex: specialite, $options: "i" }
         });
 
         res.json(medecins);
@@ -188,7 +190,7 @@ authMedecin.put('/doctors/:doctorId/blacklist/:userId', async (req, res) => {
         await user.save();
 
         // Set the user's blacklist status to true
-        doctor.blackListeddUsers.push(user.id);
+        doctor.isBlacklisted.push(user.id);
         await doctor.save();
 
         res.json({ message: 'User blacklisted successfully' });
