@@ -108,12 +108,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.notifications, color: Colors.white, size: 25),
-              ),
+              SizedBox(width: 20,)
             ],
           ),
         ),

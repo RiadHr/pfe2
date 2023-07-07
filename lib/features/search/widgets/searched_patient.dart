@@ -12,14 +12,6 @@ class SearchedUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double totalRating = 0;
-    // for (int i = 0; i < user.rating!.length; i++) {
-    //   totalRating += user.rating![i].rating;
-    // }
-    // double avgRating = 0;
-    // if (totalRating != 0) {
-    //   avgRating = totalRating / user.rating!.length;
-    // }
     return Column(
       children: [
         Container(
@@ -31,21 +23,16 @@ class SearchedUser extends StatelessWidget {
           padding: EdgeInsets.all(10),
           child: Row(
             children: [
-              // Image.network(
-              //   user.images[0],
-              //   fit: BoxFit.contain,
-              //   height: 135,
-              //   width: 135,
-              // ),
               Container(
                 // color: Colors.grey,
                 width: 80,
                 height: 80,
                 child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
                   child: Icon(
                     Icons.account_circle,
-                    // color:Colors.grey ,
-                    size: 80,
+                    color: Colors.grey,
+                    size: 60,
                   ),
                 ),
               ),

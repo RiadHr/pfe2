@@ -116,10 +116,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           padding: EdgeInsets.all(5),
                           margin: EdgeInsets.only(right: 40),
                           child: CircleAvatar(
-                            // backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             child: Icon(
                               Icons.notifications,
-                              color: Colors.white,
+                              color: Colors.grey,
                               size: 60,
                             ),
                           ),

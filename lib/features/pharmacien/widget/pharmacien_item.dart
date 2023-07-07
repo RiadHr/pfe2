@@ -47,10 +47,10 @@ class PharmacienItem extends StatelessWidget {
             padding: EdgeInsets.all(5),
             margin: EdgeInsets.only(right: 40),
             child: CircleAvatar(
-              // backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
               child: Icon(
                 Icons.account_circle,
-                color: Colors.white,
+                color: Colors.grey,
                 size: 60,
               ),
             ),

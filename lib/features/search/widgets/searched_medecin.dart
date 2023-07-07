@@ -36,10 +36,11 @@ class SearchedMedecin extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: CircleAvatar(
+                  backgroundColor: Colors.transparent,
                   child: Icon(
-                     Icons.account_circle,
-                     color:Colors.white ,
-                     size: 80,
+                    Icons.account_circle,
+                    color: Colors.grey,
+                    size: 60,
                   ),
                 ),
               ),
