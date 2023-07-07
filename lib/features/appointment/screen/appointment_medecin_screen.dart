@@ -212,116 +212,117 @@ class _AppointmentMedecinScreenState extends State<AppointmentMedecinScreen> {
                 itemBuilder: ((context, index) {
                   Appointment schedule = schedules[index];
                   bool isLastElement = schedules.length + 1 == index;
-                  return GestureDetector(
-                    onTap: (){
-                      print('appointment =${schedule.id}');
-                      Navigator.pushNamed(
-                          context, BookingMedecinScreen.routeName,
-                          arguments:schedule );
-                    },
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        side: const BorderSide(
-                          color: Colors.grey,
-                        ),
-                        borderRadius: BorderRadius.circular(20),
+                  return Card(
+                    shape: RoundedRectangleBorder(
+                      side: const BorderSide(
+                        color: Colors.grey,
                       ),
-                      margin: !isLastElement
-                          ? const EdgeInsets.only(bottom: 20)
-                          : EdgeInsets.zero,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            Row(
-                              children: [
-                                CircleAvatar(child: Icon(Icons.account_circle),
-                                  //   backgroundImage: NetworkImage(
-                                  //       "http://127.0.0.1:8000${schedule['doctor_profile']}"),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    margin: !isLastElement
+                        ? const EdgeInsets.only(bottom: 20)
+                        : EdgeInsets.zero,
+                    child: Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                child: Icon(
+                                  Icons.account_circle,
+                                  color: Colors.grey,
+                                  size: 40,
                                 ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      schedule.doctorName,
-                                      style: const TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      schedule.userName,
-                                      style: const TextStyle(
-                                        color: Colors.grey,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            ScheduleCard(
-                              date: '${schedule.dateTime.day}/${schedule.dateTime.month.toString()}/${schedule.dateTime.year}',
-                              day: schedule.dateTime.hour.toString(),
-                              time: schedule.time,
-                            ),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      backgroundColor:
-                                      GlobalVariables.secondaryColor,
-                                    ),
-                                    onPressed: () {
-                                      setState(() {
-                                        schedule.status = 'annuler';
-                                        filterAppointment();
-                                        // print('${appointmentProvider.appointment.userName}');
-                                      });
-                                    },
-                                    child: const Text(
-                                      'annuler',
-                                      style: TextStyle(
-                                          color: GlobalVariables.fourthColor),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    schedule.doctorName,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 20,
-                                ),
-                                Expanded(
-                                  child: OutlinedButton(
-                                    style: OutlinedButton.styleFrom(
-                                      backgroundColor:
-                                      GlobalVariables.firstColor,
-                                    ),
-                                    onPressed: () {},
-                                    child: const Text(
-                                      'Reschedule',
-                                      style: TextStyle(color: Colors.white),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    schedule.userName,
+                                    style: const TextStyle(
+                                      color: Colors.grey,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          ScheduleCard(
+                            date: '${schedule.dateTime.day}/${schedule.dateTime.month.toString()}/${schedule.dateTime.year}',
+                            day: schedule.dateTime.hour.toString(),
+                            time: schedule.time,
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor:
+                                    GlobalVariables.secondaryColor,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      schedule.status = 'annuler';
+                                      filterAppointment();
+                                      // print('${appointmentProvider.appointment.userName}');
+                                    });
+                                  },
+                                  child: const Text(
+                                    'annuler',
+                                    style: TextStyle(
+                                        color: GlobalVariables.fourthColor),
+                                  ),
                                 ),
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor:
+                                    GlobalVariables.firstColor,
+                                  ),
+                                  onPressed: () {
+                                    print('appointment =${schedule.id}');
+                                    Navigator.pushNamed(
+                                        context, BookingMedecinScreen.routeName,
+                                        arguments:schedule );
+                                  },
+                                  child: const Text(
+                                    'Reprogrammer',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   );

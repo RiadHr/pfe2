@@ -230,7 +230,13 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                         children: [
                           Row(
                             children: [
-                              CircleAvatar(child: Icon(Icons.account_circle),
+                              CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                child: Icon(
+                                  Icons.account_circle,
+                                  color: Colors.grey,
+                                  size: 40,
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
