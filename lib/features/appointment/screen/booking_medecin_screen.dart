@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pfe2/features/home/screens/bottom_bar_medecin.dart';
 import 'package:pfe2/features/home/screens/home_screen_medecin.dart';
+import 'package:pfe2/features/notification/service/notification_service.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -24,6 +25,7 @@ class BookingMedecinScreen extends StatefulWidget {
 
 class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
   //declaration
+  NotificationsService notificationsService = NotificationsService();
   AuthService authService = AuthService();
   AppointmentService appoinmentService = AppointmentService();
   CalendarFormat _format = CalendarFormat.month;
@@ -192,6 +194,7 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
                       _focusDay,
                       context
                   );
+                  notificationsService.saveNotifications(user.id, medecin.id, _focusDay, medecin.name,user.name, timeSelected);
                   Navigator.pushNamed(context, BottomBarMedecin.routeName);
                 },
                 disable: _timeSelected && _dateSelected ? false : true,

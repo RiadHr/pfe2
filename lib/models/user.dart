@@ -92,7 +92,7 @@ class User {
     String? token,
     String? type,
     List<String>? isBlacklisted,
-    final List<Notifications>? notifications,
+    List<Notifications>? notifications,
   }) {
     return User(
       id: id ?? this.id,

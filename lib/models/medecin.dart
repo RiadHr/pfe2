@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:pfe2/models/rating.dart';
 
 import 'appointment.dart';
+import 'notification.dart';
 
 
 class Medecin {
@@ -21,6 +22,7 @@ class Medecin {
   final List<Appointment>? appointment;
   final List<String>? blackListedUsers;
   final bool? isBlocked;
+  final List<Notifications>? notifications;
 
   Medecin({
     required this.id,
@@ -37,7 +39,8 @@ class Medecin {
     this.rating,
     this.appointment,
     this.blackListedUsers,
-    this.isBlocked
+    this.isBlocked,
+    this.notifications
   });
 
   Map<String, dynamic> toMap() {
@@ -56,7 +59,8 @@ class Medecin {
       'appointment':appointment,
       'anciente':anciente,
       'blackListedUsers':blackListedUsers,
-      'isBlocked':isBlocked
+      'isBlocked':isBlocked,
+      'notifications':notifications
     };
   }
 
@@ -87,6 +91,12 @@ class Medecin {
               (x) => Appointment.fromMap(x),
         ),
       ) : null,
+      notifications: map['notifications'] != null
+          ? List<Notifications>.from(
+        map['notifications']?.map(
+              (x) => Notifications.fromMap(x),
+        ),
+      ) : null,
 
     );
   }
@@ -109,7 +119,8 @@ class Medecin {
     int? anciente,
     final List<Rating>? rating,
     final List<Appointment>? appointment,
-    bool? isBlocked
+    bool? isBlocked,
+    List<Notifications>? notifications
 
 
   }) {
@@ -127,7 +138,8 @@ class Medecin {
       anciente: anciente ?? this.anciente,
       rating: rating ?? this.rating,
       appointment: appointment ?? this.appointment,
-      isBlocked: isBlocked ?? this.isBlocked
+      isBlocked: isBlocked ?? this.isBlocked,
+      notifications: notifications ?? this.notifications
     );
   }
 }

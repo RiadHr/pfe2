@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/features/notification/screen/notification_medecin.dart';
 import 'package:pfe2/features/notification/screen/notification_screen.dart';
 import 'package:provider/provider.dart';
 import '../../../common/widgets/icon_container.dart';
@@ -23,7 +24,7 @@ class _BottomBarMedecinState extends State<BottomBarMedecin> {
 
   List<Widget> pages = [
     const HomeScreenMedecin(),
-    const NotificationsScreen(),
+    const NotificationsMedecinScreen(),
     AppointmentMedecinScreen(),
   ];
 
@@ -56,7 +57,7 @@ class _BottomBarMedecinState extends State<BottomBarMedecin> {
           // ACCOUNT
           BottomNavigationBarItem(
             icon: IconContainer(
-                iconD: Icons.account_circle,
+                iconD: Icons.notifications,
                 page: _page,
                 bottomBarWidth: bottomBarWidth,
                 pageNumber: 1),

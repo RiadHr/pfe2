@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pfe2/features/appointment/screen/booking_medecin_screen.dart';
 import 'package:pfe2/features/home/screens/bottom_bar_pharmacien.dart';
+import 'package:pfe2/features/notification/screen/notification_medecin.dart';
 import 'package:pfe2/features/notification/screen/notification_screen.dart';
 import 'package:pfe2/models/appointment.dart';
 import 'features/admin/screen/admin_screen.dart';
@@ -202,6 +203,12 @@ Route<dynamic> generatedRoute(RouteSettings routeSettings,BuildContext context) 
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => NotificationsScreen(),
+      );
+
+    case NotificationsMedecinScreen.routeName:
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => NotificationsMedecinScreen(),
       );
 
     case BottomBarPharmacien.routeName:

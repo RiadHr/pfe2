@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const ratingSchema = require('./rating');
 const appointmentSchema = require('./appointment');
+const notificationSchema = require("./notification");
 
 const medecinSchema = mongoose.Schema({
     idMatricule:{required: true,type:String},
@@ -26,7 +27,8 @@ const medecinSchema = mongoose.Schema({
     anciente:{required:true, type:Number,},
     isBlocked:{type:Boolean,default: false},
     ratings:[ratingSchema],
-    appointment :[appointmentSchema]
+    appointment :[appointmentSchema],
+    notifications:[notificationSchema]
 });
 
 const Medecin = mongoose.model("Medecin", medecinSchema);
