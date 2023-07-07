@@ -72,7 +72,6 @@ class _AppointmentMedecinScreenState extends State<AppointmentMedecinScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final medecin = Provider.of<MedecinProvider>(context).medecin;
     // print(schedules);
     return Scaffold(
       appBar: PreferredSize(
@@ -208,10 +207,10 @@ class _AppointmentMedecinScreenState extends State<AppointmentMedecinScreen> {
             ),
             Expanded(
               child: ListView.builder(
-                itemCount: schedules.length,
+                itemCount: currentSchedules.length,
                 itemBuilder: ((context, index) {
-                  Appointment schedule = schedules[index];
-                  bool isLastElement = schedules.length + 1 == index;
+                  Appointment schedule = currentSchedules[index];
+                  bool isLastElement = currentSchedules.length + 1 == index;
                   return Card(
                     shape: RoundedRectangleBorder(
                       side: const BorderSide(
@@ -287,7 +286,8 @@ class _AppointmentMedecinScreenState extends State<AppointmentMedecinScreen> {
                                   ),
                                   onPressed: () {
                                     setState(() {
-                                      schedule.status = 'annuler';
+                                      appointmentService.updateAppointmentStatus(context, schedule.id,'annuler');
+                                      // schedule.status = 'annuler';
                                       filterAppointment();
                                       // print('${appointmentProvider.appointment.userName}');
                                     });

@@ -87,7 +87,7 @@ authRouterAppointment.patch('/appointments/:appointmentId/:status', async (req, 
     try {
         // Find the appointment by appointmentId
         const appointment = await Appointment.findById(appointmentId);
-        console.log('appointment :'+appointment);
+        // console.log('appointment :'+appointment);
 
         if (!appointment) {
             return res.status(404).json({ error: 'Appointment not found' });
@@ -95,9 +95,9 @@ authRouterAppointment.patch('/appointments/:appointmentId/:status', async (req, 
 
         // Update the appointment status
         appointment.status = newStatus;
-        console.log('status'+newStatus);
+        // console.log('status'+newStatus);
         // Save the updated appointment
-        console.log(appointment);
+        // console.log(appointment);
         await appointment.save();
 
         res.json({ message: 'Appointment status updated successfully' });
@@ -115,7 +115,7 @@ authRouterAppointment.put('/appointments/:appointmentId/:dateTime', async (req, 
     try {
         // Find the appointment by appointmentId
         const appointment = await Appointment.findById(appointmentId);
-        console.log('appoitment'+appointment);
+        // console.log('appoitment'+appointment);
         if (!appointment) {
             return res.status(404).json({ error: 'Appointment not found' });
         }

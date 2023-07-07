@@ -212,9 +212,13 @@ auth.put('/users/:userId/block', async (req, res) => {
             return res.status(404).json({ message: 'User not found' });
         }
 
-        console.log('userBlocked'+user.isBlocked);
+        // console.log('userBlocked'+user.isBlocked);
         // Block the user by updating the necessary fields
+        if(user.isBlocked == true){
+            user.isBlocked = false;
+        }else{
             user.isBlocked = true;
+        }
 
         // Save the changes to the user
         await user.save();
@@ -232,10 +236,10 @@ auth.put('/users/:userId/block', async (req, res) => {
 auth.put('/doctors/:doctorId/block', async (req, res) => {
     try {
         const { doctorId } = req.params;
-        console.log('doctor id = '+doctorId);
+        // console.log('doctor id = '+doctorId);
         // Find the user by userId
         const doctor = await Medecin.findById(doctorId);
-        console.log('doctor = '+doctor)
+        // console.log('doctor = '+doctor)
 
         if (!doctor) {
             return res.status(404).json({ message: 'User not found' });
@@ -245,10 +249,10 @@ auth.put('/doctors/:doctorId/block', async (req, res) => {
         // Block the user by updating the necessary fields
         if(doctor.isBlocked == true){
             doctor.isBlocked = false;
-            console.log('doctor unblocked'+doctor.isBlocked);
+            // console.log('doctor unblocked'+doctor.isBlocked);
         }else{
             doctor.isBlocked = true;
-            console.log('doctor blocked'+doctor.isBlocked);
+            // console.log('doctor blocked'+doctor.isBlocked);
 
         }
 

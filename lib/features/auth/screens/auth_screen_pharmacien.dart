@@ -219,7 +219,7 @@ class _AuthScreenPharmacienState extends State<AuthScreenPharmacien> {
                   ),
                   tileColor: GlobalVariables.firstColor,
                   title: const Text(
-                    'Créer un Compte Medecin',
+                    'Créer un Compte Pharmacien',
                     style: TextStyle(
                       color: GlobalVariables.fourthColor,
                       fontWeight: FontWeight.bold,
