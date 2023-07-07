@@ -16,6 +16,9 @@ class Pharmacien {
   final String token;
   final int anciente;
   final List<Rating>? rating;
+  final bool? isBlocked;
+  final bool ? permanance;
+
 
   Pharmacien({
     required this.id,
@@ -29,6 +32,8 @@ class Pharmacien {
     required this.token,
     required this.anciente,
     this.rating,
+    this.isBlocked,
+    this.permanance,
   });
 
   Map<String, dynamic> toMap() {
@@ -43,6 +48,8 @@ class Pharmacien {
       'telephone':telephone,
       'token': token,
       'anciente':anciente,
+      'isBlocked':isBlocked,
+      'permanance':permanance
     };
   }
 
@@ -58,6 +65,8 @@ class Pharmacien {
       telephone: map['telephone']?? '',
       token: map['token'] ?? '',
       anciente: map['anciente']??0,
+      isBlocked: map['isBlocked']?? false,
+      permanance: map['permanance']?? false,
       rating: map['ratings'] != null
           ? List<Rating>.from(
         map['ratings']?.map(
@@ -81,6 +90,10 @@ class Pharmacien {
     String? daira,
     String? telephone,
     String? token,
+    bool? isBlocked,
+    bool? permanance,
+    final List<Rating>? rating,
+
   }) {
     return Pharmacien(
       id: id ?? this.id,
@@ -93,6 +106,9 @@ class Pharmacien {
       telephone: telephone ?? this.telephone,
       token: token ?? this.token,
       anciente: anciente ?? 0,
+      isBlocked: isBlocked ?? false,
+      permanance: permanance ?? false,
+      rating: rating ?? this.rating,
     );
   }
 }

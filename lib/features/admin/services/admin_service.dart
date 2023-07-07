@@ -57,4 +57,57 @@ class AdminService{
     }
   }
 
+  Future<void> blocklistPharmacien( String pharmacienId) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      final url = Uri.parse('$uri/pharmaciens/$pharmacienId/block');
+
+      final response = await http.put(
+        url,
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token!
+        },
+        body: json.encode({'pharmacienId':pharmacienId}),
+      );
+
+      if (response.statusCode == 200) {
+        print(response.body);
+        print('pharmacien blocklisted successfully');
+      } else {
+        print('${response.body}: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error: $error');
+    }
+  }
+
+
+  Future<void> permanancelistPharmacien( String pharmacienId) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      final url = Uri.parse('$uri/pharmaciens/$pharmacienId/permanance');
+
+      final response = await http.put(
+        url,
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token!
+        },
+        body: json.encode({'pharmacienId':pharmacienId}),
+      );
+
+      if (response.statusCode == 200) {
+        print(response.body);
+        print('pharmacien ajouter au permance successfully');
+      } else {
+        print('${response.body}: ${response.statusCode}');
+      }
+    } catch (error) {
+      print('Error: $error');
+    }
+  }
+
 }

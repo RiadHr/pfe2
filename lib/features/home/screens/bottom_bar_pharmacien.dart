@@ -56,14 +56,7 @@ class _BottomBarPharmacienState extends State<BottomBarPharmacien> {
                 pageNumber: 1),
             label: '',
           ),
-          BottomNavigationBarItem(
-            icon: IconContainer(
-                iconD: Icons.calendar_month,
-                page: _page,
-                bottomBarWidth: bottomBarWidth,
-                pageNumber: 3),
-            label: '',
-          ),
+
         ],
       ),
     );

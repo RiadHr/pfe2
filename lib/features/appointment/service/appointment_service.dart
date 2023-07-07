@@ -190,14 +190,14 @@ class AppointmentService {
   }
 
   Future<void> updateAppointmentDate(
-      String appointmentId, DateTime newDateTime,BuildContext context) async {
+      String appointmentId, DateTime newDateTime,BuildContext context,String time) async {
     final medecinProvider = Provider.of<MedecinProvider>(context,listen: false);
     // final url = Uri.parse('$uri/appointments/$appointmentId/$newDateTime');
 
 
     try {
       final response = await http.put(
-          Uri.parse('$uri/appointments/$appointmentId/$newDateTime'),
+          Uri.parse('$uri/appointments/$appointmentId/$newDateTime/$time'),
           headers:  {'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': medecinProvider.medecin.token,}
       );

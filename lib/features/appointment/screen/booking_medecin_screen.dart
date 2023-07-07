@@ -77,9 +77,9 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
                 onPressed: () {
                   setState(() {
                     defaultColor =
-                    defaultColor != GlobalVariables.secondaryColor
-                        ? GlobalVariables.secondaryColor
-                        : GlobalVariables.firstColor;
+                        defaultColor != GlobalVariables.secondaryColor
+                            ? GlobalVariables.secondaryColor
+                            : GlobalVariables.firstColor;
                     authService.logOut(context);
                   });
                 },
@@ -118,68 +118,68 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
           ),
           _isWeekend
               ? SliverToBoxAdapter(
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 10, vertical: 30),
-              alignment: Alignment.center,
-              child: const Text(
-                'Le week-end n\'est pas disponible, veuillez sélectionner une autre date',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          )
-              : SliverGrid(
-            delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                return InkWell(
-                  splashColor: Colors.transparent,
-                  onTap: () {
-                    setState(() {
-                      // print(_currentIndex);
-                      print(index);
-                      _currentIndex = index;
-                      _timeSelected = true;
-                      if (index == 0) {
-                        timeSelected = matin;
-                      } else {
-                        timeSelected = soir;
-                      }
-                    });
-                  },
                   child: Container(
-                    margin: const EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: _currentIndex == index
-                            ? Colors.white
-                            : Colors.black,
-                      ),
-                      borderRadius: BorderRadius.circular(15),
-                      color: _currentIndex == index
-                          ? GlobalVariables.secondaryColor
-                          : null,
-                    ),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 30),
                     alignment: Alignment.center,
-                    child: Text(
-                      ' ${index == 0 ? "matin" : "apres-midi"}',
+                    child: const Text(
+                      'Le week-end n\'est pas disponible, veuillez sélectionner une autre date',
                       style: TextStyle(
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        color:
-                        _currentIndex == index ? Colors.white : null,
+                        color: Colors.grey,
                       ),
                     ),
                   ),
-                );
-              },
-              childCount: 2,
-            ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2, childAspectRatio: 1.5),
-          ),
+                )
+              : SliverGrid(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return InkWell(
+                        splashColor: Colors.transparent,
+                        onTap: () {
+                          setState(() {
+                            // print(_currentIndex);
+                            print(index);
+                            _currentIndex = index;
+                            _timeSelected = true;
+                            if (index == 0) {
+                              timeSelected = matin;
+                            } else {
+                              timeSelected = soir;
+                            }
+                          });
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: _currentIndex == index
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
+                            borderRadius: BorderRadius.circular(15),
+                            color: _currentIndex == index
+                                ? GlobalVariables.secondaryColor
+                                : null,
+                          ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            ' ${index == 0 ? "matin" : "apres-midi"}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  _currentIndex == index ? Colors.white : null,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                    childCount: 2,
+                  ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 1.5),
+                ),
           SliverToBoxAdapter(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 80),
@@ -190,11 +190,9 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
                   print('focusedDay = $_focusDay');
                   print('selectedDay = $timeSelected');
                   appoinmentService.updateAppointmentDate(
-                      widget.appointment.id,
-                      _focusDay,
-                      context
-                  );
-                  notificationsService.saveNotifications(user.id, medecin.id, _focusDay, medecin.name,user.name, timeSelected);
+                      widget.appointment.id, _focusDay, context, timeSelected);
+                  notificationsService.saveNotifications(widget.appointment.userId, medecin.id,
+                      _focusDay, medecin.name, widget.appointment.userName, timeSelected);
                   Navigator.pushNamed(context, BottomBarMedecin.routeName);
                 },
                 disable: _timeSelected && _dateSelected ? false : true,

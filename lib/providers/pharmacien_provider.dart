@@ -13,7 +13,9 @@ class PharmacienProvider extends ChangeNotifier {
     daira: '',
     telephone: '',
     token: '',
-    anciente: 0
+    anciente: 0,
+    isBlocked: false,
+    permanance: false
   );
 
   Pharmacien get pharmacien => _pharmacien;

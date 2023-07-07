@@ -14,6 +14,7 @@ class User {
   final String telephone;
   final String token;
   final String type;
+  final bool? isBlocked;
   final List<String>? isBlacklisted;
   final List<Notifications>? notifications;
 
@@ -28,6 +29,7 @@ class User {
     required this.telephone,
     required this.token,
     required this.type,
+    this.isBlocked,
     this.isBlacklisted,
     this.notifications
   });
@@ -44,6 +46,7 @@ class User {
       'telephone':telephone,
       'token': token,
       'type': type,
+      'isBlocked': isBlocked,
       'isBlacklisted':isBlacklisted,
       'notifications':notifications
     };
@@ -61,6 +64,7 @@ class User {
       telephone: map['telephone']?? '',
       token: map['token'] ?? '',
       type: map['type'] ?? '',
+      isBlocked: map['isBlocked']?? false,
       isBlacklisted:map['isBlacklisted'] != null
           ? List<String>.from(
         map['isBlacklisted']?.map(
@@ -91,6 +95,7 @@ class User {
     String? telephone,
     String? token,
     String? type,
+    bool? isBlocked,
     List<String>? isBlacklisted,
     List<Notifications>? notifications,
   }) {
@@ -105,6 +110,7 @@ class User {
       telephone: telephone ?? this.telephone,
       token: token ?? this.token,
       type: type ?? this.type,
+      isBlocked: isBlocked ?? this.isBlocked,
       isBlacklisted: isBlacklisted ?? this.isBlacklisted,
       notifications: notifications ?? this.notifications
     );

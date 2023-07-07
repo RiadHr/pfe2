@@ -169,7 +169,7 @@ auth.get("/api/showPharmacien/:wilaya/:daira", authMiddleware, async (req, res) 
 });
 
 
-auth.get("/api/showUser_Pharmacien",pharmacienMiddleware, async (req, res) => {
+auth.get("/api/show_Pharmacien",pharmacienMiddleware, async (req, res) => {
     try {
         const pharmaciens = await Pharmacien.find({});
         res.json(pharmaciens);
@@ -259,12 +259,83 @@ auth.put('/doctors/:doctorId/block', async (req, res) => {
         // Save the changes to the user
         await doctor.save();
 
-        res.json({ message: 'User blocked successfully' });
+        res.json({ message: 'Medecin blocked successfully' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+auth.put('/pharmaciens/:pharmacienId/block', async (req, res) => {
+    try {
+        const { pharmacienId } = req.params;
+        // console.log('doctor id = '+doctorId);
+        // Find the user by userId
+        const pharmacien = await Pharmacien.findById(pharmacienId);
+        // console.log('doctor = '+doctor)
+
+        if (!pharmacien) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        // print('doctor isblocked'+);
+
+        // Block the user by updating the necessary fields
+        if(pharmacien.isBlocked == true){
+            pharmacien.isBlocked = false;
+            // console.log('doctor unblocked'+doctor.isBlocked);
+        }else{
+            pharmacien.isBlocked = true;
+            // console.log('doctor blocked'+doctor.isBlocked);
+
+        }
+
+        // Save the changes to the user
+        await pharmacien.save();
+
+        res.json({ message: 'pharmacien blocked successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+auth.put('/pharmaciens/:pharmacienId/permanance', async (req, res) => {
+    try {
+        const { pharmacienId } = req.params;
+        // console.log('doctor id = '+doctorId);
+        // Find the user by userId
+        const pharmacien = await Pharmacien.findById(pharmacienId);
+        // console.log('doctor = '+doctor)
+
+        if (!pharmacien) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        // print('doctor isblocked'+);
+
+        // Block the user by updating the necessary fields
+        if(pharmacien.permanance == true){
+            pharmacien.permanance = false;
+            // console.log('doctor unblocked'+doctor.isBlocked);
+        }else{
+            pharmacien.permanance = true;
+            // console.log('doctor blocked'+doctor.isBlocked);
+
+        }
+
+        // Save the changes to the user
+        await pharmacien.save();
+
+        res.json({ message: 'pharmacien est ajouter successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
+
 
 
 

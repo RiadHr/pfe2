@@ -13,6 +13,7 @@ class UserProvider extends ChangeNotifier {
     telephone: '',
     type: '',
     token: '',
+    isBlocked: false
   );
 
   User get user => _user;

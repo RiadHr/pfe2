@@ -104,7 +104,7 @@ class _HomeScreenPharmacienState extends State<HomeScreenPharmacien> {
                     height: 100,
                     margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Container(
                           // decoration: BoxDecoration(
@@ -118,10 +118,10 @@ class _HomeScreenPharmacienState extends State<HomeScreenPharmacien> {
                           padding: EdgeInsets.all(5),
                           margin: EdgeInsets.only(right: 40),
                           child: CircleAvatar(
-                            // backgroundColor: Colors.white,
+                            backgroundColor: Colors.transparent,
                             child: Icon(
                               Icons.account_circle,
-                              color: Colors.white,
+                              color: Colors.grey,
                               size: 60,
                             ),
                           ),

@@ -23,6 +23,8 @@ const pharmacienSchema = mongoose.Schema({
     telephone: {required:true, type: String,},
     anciente:{required:true, type:Number,},
     ratings:[ratingSchema],
+    permanance:{required:true,type:Boolean,default:false},
+    isBlocked:{required:true,type:Boolean,default:false}
 });
 
 const Pharmacien = mongoose.model("Pharmacien", pharmacienSchema);

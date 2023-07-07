@@ -108,9 +108,10 @@ authRouterAppointment.patch('/appointments/:appointmentId/:status', async (req, 
 
 
 // PUT route to update the appointment date for a doctor
-authRouterAppointment.put('/appointments/:appointmentId/:dateTime', async (req, res) => {
+authRouterAppointment.put('/appointments/:appointmentId/:dateTime/:time', async (req, res) => {
     const appointmentId = req.params.appointmentId;
     const updatedDateTime = req.params.dateTime;
+    const timeUpdated = req.params.time
     console.log('date'+updatedDateTime);
     try {
         // Find the appointment by appointmentId
@@ -122,6 +123,7 @@ authRouterAppointment.put('/appointments/:appointmentId/:dateTime', async (req, 
 
         // Update the appointment date
         appointment.dateTime = updatedDateTime;
+        appointment.time = timeUpdated;
         // appointment.updatedDateTime = new Date();
 
         // Save the updated appointment

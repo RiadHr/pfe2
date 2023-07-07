@@ -207,6 +207,39 @@ class AuthService {
 
 
 
+  //fetch all pharmacien
+  Future<List<Pharmacien>> fetchpharmaciens(BuildContext context) async {
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    List<Pharmacien> pharmacienList = [];
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      http.Response res =
+      await http.get(Uri.parse('$uri/api/show_Pharmacien'), headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'x-auth-token': token!,
+      });
+      httpErrorHandle(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            pharmacienList.add(
+              Pharmacien.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
+    return pharmacienList;
+  }
+
   //fetch all medecin
   Future<List<Medecin>> fetchMedecins(BuildContext context) async {
     final userProvider = Provider.of<UserProvider>(context, listen: false);

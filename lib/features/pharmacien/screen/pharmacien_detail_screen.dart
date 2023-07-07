@@ -239,33 +239,33 @@ class _PharmacienDetailScreenState extends State<PharmacienDetailScreen> {
                     ]),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    text: 'Permanace : ',
+                    children: [
+                      TextSpan(
+                        style:TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w300,
+                        ),
+                        text: widget.pharmacien.permanance == true ? 'est permanant' :'n est pas permanant ' ,
+                      ),
+                    ]),
+              ),
+            ),
             Container(
               color: Colors.black12,
               height: 5,
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(10),
-              // child: Container(
-              //   width: double.infinity,
-              //   alignment: AlignmentDirectional.center,
-                // margin: EdgeInsets.symmetric(horizontal: 100),
-                // decoration:BoxDecoration(
-                //   border: Border.all(
-                //       width: 2,
-                //       style: BorderStyle.solid,
-                //       color: Colors.black),
-                // ),
-            //     child: CustomButton(
-            //       text: 'faire une visite medicale',
-            //       onTap: () {
-            //       },
-            //     ),
-            //   ),
-            // ),
-            // Container(
-            //   color: Colors.black12,
-            //   height: 5,
-            // ),
+
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(

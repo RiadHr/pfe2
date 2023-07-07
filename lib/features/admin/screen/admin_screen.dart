@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:pfe2/features/admin/screen/home_screen_pha_admin.dart';
 import '../../../common/widgets/icon_container.dart';
 import '../../../constants/global_variables.dart';
 import '../../../models/medecin.dart';
@@ -22,7 +24,7 @@ class _AdminScreenState extends State<AdminScreen> {
   List<Widget> pages = [
     HomeAdminScreen(),
     HomeScreenMedAdmin(),
-    AuthType(),
+    HomeAdminPhaScreen(),
   ];
 
   void updatePage(int page) {
@@ -62,7 +64,7 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
           BottomNavigationBarItem(
             icon: IconContainer(
-                iconD: Icons.account_circle,
+                iconD: FontAwesomeIcons.solidMoon,
                 page: _page,
                 bottomBarWidth: bottomBarWidth,
                 pageNumber: 2),

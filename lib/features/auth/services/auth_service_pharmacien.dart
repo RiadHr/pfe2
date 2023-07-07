@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../constants/error_handling.dart';
 import '../../../constants/global_variables.dart';
 import '../../../constants/utils.dart';
+import '../../admin/screen/block_screen.dart';
 import '../../home/screens/bottom_bar_medecin.dart';
 import '../../home/screens/bottom_bar_pharmacien.dart';
 import '../../home/screens/home_screen.dart';
@@ -95,14 +96,21 @@ class AuthServicePharmacien {
         context: context,
         onSuccess: () async {
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          Provider.of<PharmacienProvider>(context, listen: false).setPharmacien(res.body);
+          Provider.of<PharmacienProvider>(context, listen: false).setPharmacien(
+              res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
-          Navigator.pushNamedAndRemoveUntil(
-            context,
-            BottomBarPharmacien.routeName,
-                (route) => false,
-          );
-        },
+          if (jsonDecode(res.body)['isBlocked'] == true) {
+            Navigator.pushNamedAndRemoveUntil(context, BlockScreen.routeName,
+                    (route) => false
+            );
+          } else {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              BottomBarPharmacien.routeName,
+                  (route) => false,
+            );
+          }
+        }
       );
     } catch (e) {
       showSnackBar(context, e.toString());
