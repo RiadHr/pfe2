@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/features/appointment/screen/booking_medecin_screen.dart';
 import 'package:pfe2/features/home/screens/bottom_bar_pharmacien.dart';
 import 'package:pfe2/features/notification/screen/notification_screen.dart';
+import 'package:pfe2/models/appointment.dart';
 import 'features/admin/screen/admin_screen.dart';
 import 'features/admin/screen/block_screen.dart';
 import 'features/admin/screen/home_screen_admin.dart';
@@ -206,6 +208,15 @@ Route<dynamic> generatedRoute(RouteSettings routeSettings,BuildContext context) 
       return MaterialPageRoute(
         settings: routeSettings,
         builder: (_) => const BottomBarPharmacien(),
+      );
+
+    case BookingMedecinScreen.routeName:
+      var appointment = routeSettings.arguments as Appointment ;
+      return MaterialPageRoute(
+        settings: routeSettings,
+        builder: (_) => BookingMedecinScreen(
+            appointment: appointment as Appointment,
+        ),
       );
 
 

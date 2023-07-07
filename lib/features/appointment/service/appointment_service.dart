@@ -196,7 +196,7 @@ class AppointmentService {
 
 
     try {
-      final response = await http.patch(
+      final response = await http.put(
           Uri.parse('$uri/appointments/$appointmentId/$newDateTime'),
           headers:  {'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': medecinProvider.medecin.token,}

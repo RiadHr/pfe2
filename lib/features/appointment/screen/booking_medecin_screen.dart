@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/features/home/screens/home_screen_medecin.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -190,7 +191,7 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
                       _focusDay,
                       context
                   );
-                  Navigator.pushNamed(context, AppointmentBooked.routeName);
+                  Navigator.pushNamed(context, HomeScreenMedecin.routeName);
                 },
                 disable: _timeSelected && _dateSelected ? false : true,
               ),
