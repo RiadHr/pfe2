@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../../../constants/global_variables.dart';
+import '../../../constants/utils.dart';
 import '../../../models/appointment.dart';
 import '../../../providers/medecin_provider.dart';
 import '../../../providers/user_provider.dart';
@@ -191,6 +192,7 @@ class _BookingMedecinScreenState extends State<BookingMedecinScreen> {
                   print('selectedDay = $timeSelected');
                   appoinmentService.updateAppointmentDate(
                       widget.appointment.id, _focusDay, context, timeSelected);
+                  showSnackBar(context,'le rendez-vous est modifie');
                   notificationsService.saveNotifications(widget.appointment.userId, medecin.id,
                       _focusDay, medecin.name, widget.appointment.userName, timeSelected);
                   Navigator.pushNamed(context, BottomBarMedecin.routeName);

@@ -60,7 +60,7 @@ class _BottomBarState extends State<BottomBar> {
           // ACCOUNT
           BottomNavigationBarItem(
             icon: IconContainer(
-                iconD: Icons.account_circle,
+                iconD: FontAwesomeIcons.solidMoon,
                 page: _page,
                 bottomBarWidth: bottomBarWidth,
                 pageNumber: 1,

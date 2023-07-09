@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pfe2/constants/utils.dart';
 
 import 'package:provider/provider.dart';
 import '../../../constants/global_variables.dart';
@@ -147,6 +148,7 @@ class _HomeScreenMedecinState extends State<HomeScreenMedecin> {
                         ElevatedButton(
                             onPressed: (){
                               authServiceMedecin.blacklistUser(doctor.id,userData.id);
+                              showSnackBar(context, 'l utilisateur est ajoute au blackliste');
                             },
                             child: Icon(
                               Icons.block
