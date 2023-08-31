@@ -1,6 +1,6 @@
-# pfe2
+# Tabibi
 
-A new Flutter project.
+A new Flutter project for managing the schedule of patient and the recommendation of doctors and pharmacy.
 
 ## Getting Started
 
